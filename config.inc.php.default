@@ -1,0 +1,17 @@
+<?php
+define(PCH_BASE, "file:///opt/sybhttpd/localhost.drives/NETWORK_SHARE/");
+define(PLAYED_FILE, dirname(__FILE__)."/data/played");
+define(PAGE_SIZE, 18);
+
+$shares = array(
+	array(
+		"name" => "Share name",
+		"icon" => "icon name",
+		"paths" => array(
+			array( 
+				"pch"  => "path on pch",
+				"local"=> "path on server the php script is on"
+			)
+		)
+	),
+);
