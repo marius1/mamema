@@ -9,7 +9,7 @@
 </table>
 <div>
 	{if $total > $smarty.const.PAGE_SIZE}
-		{if $page > 0}{assign var=p value=$page-1}{math assign=i equation="x*y-1" x=$page y=$smarty.const.PAGE_SIZE}{else}{assign var=p value=$pages-1}{assign var=i value=$total-1}{/if}		
+		{if $page > 0}{assign var=p value=$page-1}{math assign=i equation="x*y-1" x=$page y=$smarty.const.PAGE_SIZE}{else}{assign var=p value=$pages-1}{assign var=i value=$count}{/if}		
 		<a href="javascript:location.replace('/index.php?id={$i}&path={$path|trim:'/'|urlencode}&share={$share_id}&page={$p}');" ONFOCUSLOAD><img border="0" src="images/blank.png" /></a>		
 	{else}
 		<a href="#" ONFOCUSSET="{$count-1}"><img border="0" src="images/blank.png" /></a>
@@ -26,7 +26,7 @@
 	{foreach from=$directories item=d key=name}
 		<tr>
 			<td width="30"><img border="0" src="images/folder.png" /></td>
-			<td><a name="{$name}" class="link" href="/index.php?path={$d.full_path|urlencode}&share={$share_id}" onclick="location.replace('/index.php?id={$name}&share={$share_id}&path={$path|trim:'/'|urlencode}&page={$page}'); return true;" onfocus="return updateSelected({$name})"><marquee behavior="focus" width="1060">{$d.path}</marquee></a></td>
+			<td><a name="{$name}" class="link" href="/index.php?path={$d.full_path|urlencode}&share={$share_id}" onclick="location.replace('/index.php?id={$name}&share={$share_id}&path={$path|trim:'/'|urlencode}&page={$page}'); return true;"><marquee behavior="focus" width="1060">{$d.path}</marquee></a></td>
 		</tr>
 	{/foreach}
 
@@ -34,9 +34,9 @@
 		<tr>
 			<td width="30"><img border="0" src="images/{$f.type}{if $f.played}-played{/if}.png" /></td>
 		{if $f.type eq "vod"}
-			<td><a name="{$name}" class="link" href="/play.php?pch_file={$f.pch_file|urlencode}&local_file={$f.local_file|urlencode}&share={$share_id}" onclick="location.replace('/index.php?id={$name}&path={$path|trim:'/'|urlencode}&share={$share_id}&page={$page}'); return true;" onfocus="return updateSelected({$name})"><marquee behavior="focus" width="1060">{$f.filename}</marquee></a></td>
+			<td><a name="{$name}" class="link" href="/play.php?pch_file={$f.pch_file|urlencode}&local_file={$f.local_file|urlencode}&share={$share_id}" onclick="location.replace('/index.php?id={$name}&path={$path|trim:'/'|urlencode}&share={$share_id}&page={$page}'); return true;"><marquee behavior="focus" width="1060">{$f.filename}</marquee></a></td>
 		{else}
-			<td><a name="{$name}" class="link" href="{$f.pch_file}" onfocus="return updateSelected({$name})" {$f.type}><marquee behavior="focus" width="1060">{$f.filename}</marquee></a></td>
+			<td><a name="{$name}" class="link" href="{$f.pch_file}" {$f.type}><marquee behavior="focus" width="1060">{$f.filename}</marquee></a></td>
 		{/if}
 		</tr>
 	{/foreach}
@@ -46,7 +46,11 @@
 	{/foreach}
 	<tr>
 		<td colspan="2" align="right">
-			<span class="counter"><span id="selected">{$id+1}</span>/{$total}</span>
+			{if $total > $smarty.const.PAGE_SIZE}
+				<span class="counter">{math equation="x*y+1" x=$page y=$smarty.const.PAGE_SIZE}-{math equation="((x+1)*y)-(y-z)" z=$count x=$page y=$smarty.const.PAGE_SIZE} [{$total} item{if $total != 1}s{/if}]</span>
+			{else}
+				<span class="counter">1-{$count} [{$total} item{if $total != 1}s{/if}]</span>
+			{/if}
 		</td>
 	</tr>
 </table>

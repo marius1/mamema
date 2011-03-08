@@ -55,14 +55,7 @@
 			
 			document.getElementById('time').appendChild(time);
 			document.getElementById('date').appendChild(date);
-		};
-		
-		var updateSelected = function(a) {			
-			document.getElementById('selected').firstChild.nodeValue=""+(a+1);
-		};
-		var resetPlayed = function(a) {
-			alert(a);
-		};
+		};		
 		</script>
 		<title>JUKEBOX</title>
 	</head>
