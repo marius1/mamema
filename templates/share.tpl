@@ -9,7 +9,7 @@
 </table>
 <div>
 	{if $total > $smarty.const.PAGE_SIZE}
-		{if $page > 0}{assign var=p value=$page-1}{math assign=i equation="x*y-1" x=$page y=$smarty.const.PAGE_SIZE}{else}{assign var=p value=$pages-1}{assign var=i value=$count}{/if}		
+		{if $page > 0}{assign var=p value=$page-1}{math assign=i equation="x*y-1" x=$page y=$smarty.const.PAGE_SIZE}{else}{assign var=p value=$pages-1}{assign var=i value=$total-1}{/if}		
 		<a href="javascript:location.replace('/index.php?id={$i}&path={$path|trim:'/'|urlencode}&share={$share_id}&page={$p}');" ONFOCUSLOAD><img border="0" src="images/blank.png" /></a>		
 	{else}
 		<a href="#" ONFOCUSSET="{$count-1}"><img border="0" src="images/blank.png" /></a>
