@@ -66,12 +66,7 @@ function get_file_hash($file) {
 }
 
 function get_type($ext) {
-	$types = array(
-		'vod' => array('mkv', 'wmv', 'avi', 'mpg', 'mpeg', 'mpe', 'm2v', 'vob', 'vro', 'm2p', 'dat', 'm1v', 'ifo' ),
-		'pod' => array('jpg', 'jpeg', 'png', 'bmp'),
-		'aod' => array('mp1', 'mpa', 'mp2', 'mp3', 'ogg', 'ac3', 'wav', 'aac', 'm4a', 'wma', 'flac', 'm3u' )
-	);
-	
+	global $types;
 	foreach($types as $type => $extensions) 
 		if ( in_array($ext, $extensions) )
 			return $type;

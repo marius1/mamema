@@ -3,6 +3,12 @@ define(PCH_BASE, "file:///opt/sybhttpd/localhost.drives/NETWORK_SHARE/");
 define(PLAYED_FILE, dirname(__FILE__)."/data/played");
 define(PAGE_SIZE, 18);
 
+$types = array(
+	'vod' => array('mkv', 'wmv', 'avi', 'mpg', 'mpeg', 'mpe', 'm2v', 'vob', 'vro', 'm2p', 'dat', 'm1v', 'ifo' ),
+	'pod' => array('jpg', 'jpeg', 'png', 'bmp'),
+	'aod' => array('mp1', 'mpa', 'mp2', 'mp3', 'ogg', 'ac3', 'wav', 'aac', 'm4a', 'wma', 'flac', 'm3u' )
+);
+
 $shares = array(
 	array(
 		"name" => "Share name",
