@@ -1,4 +1,5 @@
-<a href="/reset.php?focus=" TVID="_red"><img border="0" src="images/blank.png" /></a>
+<a href="/reset.php?focus=" TVID="_RED"><img border="0" src="images/blank.png" /></a>
+<a href="/?id={$share_id}" TVID="HOME"><img border="0" src="images/blank.png" /></a>
 
 <table width="100%" cellpadding="0" cellspacing="0" border="0">
 	<tr height="115">
